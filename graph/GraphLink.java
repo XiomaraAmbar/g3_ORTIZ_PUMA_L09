@@ -68,6 +68,78 @@ public class GraphLink<E> {
         return false; //No encontró la arista
     }
 
+    /*
+    Metodo auxiliar que construye dinámicamente una
+    lista con todas las aristas del grafo
+    */
+    private ListaEnlazada<Edge<E>> getEdges() throws MensajeException {
+        ListaEnlazada<Edge<E>> ListaEdge = new ListaEnlazada<>();
+
+        //Recorre todos los vértices
+        for (int i = 0; i < listaVertex.length(); i++) {
+            Vertex<E> verticeTemporal = listaVertex.searchK(i);
+
+            //Recorre todas las aristas de este vértice
+            for (int j = 0; j < verticeTemporal.listaAdyacencia.length(); j++) {
+                Edge<E> arista = verticeTemporal.listaAdyacencia.searchK(j);
+                ListaEdge.insertLast(arista);
+            }
+        }
+        return ListaEdge;
+    }
+
+
+    //Elimina el vértice 'v' y todas sus aristas de entrada y salida
+    public boolean removeVertex(E v) throws MensajeException {
+        if (!searchVertex(v)) {
+            return false; //El vértice no existe
+        }
+
+        for (int i = 0; i < listaVertex.length(); i++) {
+            Vertex<E> verticeTemporal = listaVertex.searchK(i);
+            removeEdgeLista(verticeTemporal.listaAdyacencia, v);
+        }
+
+        //Elimina el vértice de la lista principal
+        Vertex<E> verticeEliminado = getVertex(v);
+        if (verticeEliminado != null) {
+            listaVertex.removeNode(verticeEliminado);
+            return true;
+        }
+
+        return false;
+    }
+
+    //Método auxiliar para eliminar una arista específica de una lista de adyacencia
+    private void removeEdgeLista(ListaEnlazada<Edge<E>> listaAristas, E destinoBuscado) throws MensajeException {
+        for (int i = 0; i < listaAristas.length(); i++) {
+            Edge<E> arista = listaAristas.searchK(i);
+            if (arista.getReferenciaDestino().getData().equals(destinoBuscado)) {
+                listaAristas.removeNode(arista);
+                break;
+            }
+        }
+    }
+
+    //Elimina la arista que une los vértices 'v' y 'z'
+    public boolean removeEdge(E v, E z) throws MensajeException {
+        if (!searchVertex(v) || !searchVertex(z)) {
+            return false;
+        }
+
+        if (!searchEdge(v, z)) {
+            return false;
+        }
+
+        Vertex<E> verticeOrigen = getVertex(v); //Obtiene el vértice origen
+
+        //Eliminar la arista de la lista de adyacencia
+        removeEdgeLista(verticeOrigen.listaAdyacencia, z);
+
+        return true;
+    }
+
+
     public String toString(){
         return this.listaVertex.toString();
     }
