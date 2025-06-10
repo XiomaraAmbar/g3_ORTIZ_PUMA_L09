@@ -1,4 +1,4 @@
-package Queue;
+/*package Queue;
 //Lista enlazada usando un nodo cabecera
 
 import LinkedList.MensajeException;
@@ -112,7 +112,7 @@ public class ListaEnlazadaPrioridad<E> {
     Método creado para poder trabajar con la misma lógica del searchk pero para usar en nodos
     y que no salga error en los métodos insert o remove,
     en vez de retornar el valor del nodo, retorna el nodo si lo encuentra
-     */
+
     public NodoPrioridad<E> searchNodoK(int k) throws MensajeException {
         if (isEmpty()) { //Verifica si la lista esta vacía
             throw new MensajeException("Lista enlazada vacía."); //Si esta vacía lanza una excepción
@@ -269,4 +269,4 @@ public class ListaEnlazadaPrioridad<E> {
         }
         return mayorPrioridad.frontSublista();
     }
-}
+}*/

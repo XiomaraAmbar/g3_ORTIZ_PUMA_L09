@@ -181,25 +181,4 @@ public class ListaEnlazadaSinExcepciones<E> implements ListaTDA<E>{
         lista.append("]");
         return lista.toString();
     }
-
-    public void printInvertido(){
-        Nodo<E> nodoTemporal = cabecera.getSiguiente(); //Se asigna el valor del primer nodo a la variable nodoTemporal
-        Pila<E> invertido = new Pila<>(); //Se crea una nueva lista de tipo Pila
-
-        while(nodoTemporal != cabecera){ //Ciclo que verifica que no se llego al inicio de la lista
-            invertido.push(nodoTemporal.getValor());
-            nodoTemporal = nodoTemporal.getSiguiente();
-        }
-
-        StringBuilder listaInvertida = new StringBuilder();
-        listaInvertida.append("[");
-        while (!(invertido.isEmpty())) {
-            listaInvertida.append(invertido.pop()); //Se elimina el tope y se retorna el tope
-            if (!(invertido.isEmpty())) { //Si aun la lista aun no esta vacía, aun hay elementos que sacar
-                listaInvertida.append(", ");
-            }
-        }
-        listaInvertida.append("]");
-        System.out.println(listaInvertida.toString());
-    }
 }

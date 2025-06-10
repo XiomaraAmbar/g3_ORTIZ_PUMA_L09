@@ -1,4 +1,4 @@
-package Queue;
+/*package Queue;
 
 import LinkedList.ListaEnlazada;
 import LinkedList.MensajeException;
@@ -22,14 +22,14 @@ public class ColaDePrioridad<E> {
             colaPrioridad.insertFirst(elemento);
         }
         else{
-            cola.insertLast(elemento);
+            colaPrioridad.insertLast(elemento);
         }
     }
 
     //Elimina el elemento de mayor prioridad. La cola debe existir y no estar vacía.
     public E dequeue() throws MensajeException {
         E primero = front();
-        cola.removeNodeK(0);
+        colaPrioridad.removeNodeK(0);
         return primero;
     }
 
@@ -40,12 +40,12 @@ public class ColaDePrioridad<E> {
 
     //Retorna el elemento inicial de la cola
     public E front() throws MensajeException {
-        return cola.searchK(0);
+        return colaPrioridad.searchK(0);
     }
 
     //Retorna el elemento final de la cola
     public E back() throws MensajeException {
-        return cola.searchK(cola.length()-1);
+        return colaPrioridad.searchK(colaPrioridad.length()-1);
     }
 
     //Verifica si la cola está llena o no. Se usa cuando la cola está implementada sobre una
@@ -58,4 +58,4 @@ public class ColaDePrioridad<E> {
     public void print() throws MensajeException {
         colaPrioridad.print();
     }
-}
+}*/

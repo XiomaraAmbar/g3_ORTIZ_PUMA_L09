@@ -1,7 +1,6 @@
 package LinkedList;
 //Lista enlazada usando un nodo cabecera
 
-import Queue.ColaDePrioridad;
 import Stack.Pila;
 
 public class ListaEnlazada<E> implements ListaTDA<E>{
@@ -118,6 +117,15 @@ public class ListaEnlazada<E> implements ListaTDA<E>{
             posicionK = posicionK + 1; //Y  posicion se incrementa en uno
         }
         throw new MensajeException("No se encontró el nodo en la lista enlazada.");
+    }
+
+    //Verifica si el elemento está en la lista
+    public boolean contains(E valor) {
+        try {
+            return search(valor) != -1;
+        } catch (MensajeException e) {
+            return false;
+        }
     }
 
     //Inserta el nuevo nodo al inicio de la lista
